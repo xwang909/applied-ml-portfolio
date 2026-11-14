@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Artifact 03: A portfolio-ready infrastructure brief for a secure, permission-aware RAG organizational knowledge assistant.">
+  <meta name="theme-color" content="#090d15">
+  <title>Artifact 03 · Responsible AI Infrastructure | Xinyue Wang</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <link rel="stylesheet" href="infrastructure.css">
+  <script defer src="../../assets/main.js"></script>
+  <script defer src="infrastructure.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><nav class="nav shell" aria-label="Main navigation">
+    <a class="brand" href="../../" aria-label="Xinyue Wang — portfolio home"><span class="brand-mark">X<span class="mark-dot">.</span>W</span><span class="brand-name">Xinyue Wang <small>Applied ML Portfolio</small></span></a>
+    <div class="nav-links"><a href="../../">Overview</a><a href="../../#artifacts">All artifacts</a><a href="#architecture" class="active">Architecture</a><a href="#controls">Governance</a><a class="nav-cta" href="files/Activity_3_4_AI_Infrastructure_Portfolio.docx">Get the brief ↧</a></div>
+  </nav></header>
+  <main id="main">
+    <section class="artifact-hero shell">
+      <div class="artifact-intro">
+        <p class="eyebrow"><span class="signal-dot"></span> ARTIFACT 03 · AIML-501 · WORKSHOP 3</p>
+        <h1>Designing <span class="display-italic">responsible AI</span> infrastructure.</h1>
+        <p class="lead">A permission-aware knowledge assistant that finds the right policy, respects who can see it, and keeps human judgment in the loop.</p>
+        <div class="hero-buttons"><a class="btn btn-primary" href="#architecture">Explore the architecture <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="files/Activity_3_4_AI_Infrastructure_Portfolio.docx" download>Download one-page brief ↓</a></div>
+        <p class="context-note">Fictional course scenario · Design proposal only · Not an implemented or security-certified system</p>
+      </div>
+      <div class="hero-feature" aria-label="Proposed AI infrastructure at a glance">
+        <div class="hero-feature-top"><span class="mini-kicker">THE DESIGN PRIORITY</span><span class="status-indicator">CONDITIONAL PROPOSAL</span></div>
+        <div class="focus-illustration" aria-hidden="true">
+          <svg viewBox="0 0 390 235" role="img"><defs><linearGradient id="hl" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffa77e"/><stop offset="1" stop-color="#f6b18c"/></linearGradient></defs>
+            <g fill="none" stroke="#4b6178" stroke-width="2" stroke-dasharray="4 7"><path d="M46 55H175V119H340"/><path d="M46 184H175V119"/><path d="M340 119v65"/></g>
+            <circle cx="46" cy="55" r="21" fill="#1d293a" stroke="#849db8"/><circle cx="46" cy="184" r="21" fill="#1d293a" stroke="#849db8"/><circle cx="340" cy="119" r="21" fill="#1d293a" stroke="#849db8"/>
+            <rect x="130" y="75" width="102" height="87" rx="17" fill="#263344" stroke="#f6b18c" stroke-width="2"/><path d="M181 95c-18 0-25 9-25 9v19c0 16 25 27 25 27s25-11 25-27v-19s-7-9-25-9z" fill="none" stroke="url(#hl)" stroke-width="3"/><path d="M171 120l8 8 17-18" fill="none" stroke="#ffbd98" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#f6b18c"><circle cx="46" cy="55" r="5"/><circle cx="46" cy="184" r="5"/><circle cx="340" cy="119" r="5"/></g>
+            <g font-size="10" font-weight="700" letter-spacing="1" fill="#b5c2d3"><text x="17" y="23">POLICY</text><text x="17" y="219">IDENTITY</text><text x="303" y="91">ANSWER</text><text x="150" y="185">PERMISSIONS</text></g>
+          </svg>
+        </div>
+        <div class="hero-feature-bottom"><span>Grounded answers</span><strong>Access first. Answer second.</strong></div>
+      </div>
+    </section>
+
+    <section class="metric-strip" aria-label="The fictional performance evidence">
+      <div class="shell metric-grid">
+        <div><span class="metric-value">82<span>%</span></span><span class="metric-label">answers grounded</span></div>
+        <div><span class="metric-value">12<span>%</span></span><span class="metric-label">contained unsupported claims</span></div>
+        <div><span class="metric-value">2<span>/20</span></span><span class="metric-label">restricted tests leaked content</span></div>
+        <div><span class="metric-value">1<span> day</span></span><span class="metric-label">policy update requirement</span></div>
+      </div>
+      <p class="metric-caption shell">The first three figures are instructor-provided fictional results; the one-business-day update target is an instructor-provided operational constraint. These are not measured outcomes of a deployed system.</p>
+    </section>
+
+    <section class="section shell" id="architecture">
+      <div class="section-head"><p class="section-kicker">01 / SYSTEM DESIGN</p><h2>From approved sources <span class="display-italic">to accountable answers.</span></h2><p class="muted narrow">The proposed architecture uses managed retrieval-augmented generation (RAG). Click each stage to see its operational owner and key control.</p></div>
+      <div class="arch-panel">
+        <div class="arch-top"><span>END-TO-END DATA FLOW</span><span class="draft-label">PROPOSED · NOT DEPLOYED</span></div>
+        <div class="arch-flow" role="group" aria-label="Proposed knowledge assistant data flow">
+          <button type="button" class="flow-step is-active" data-step="source" aria-pressed="true"><span class="flow-number">01</span><span class="flow-icon" aria-hidden="true">▤</span><strong>Approved sources</strong><small>Handbook, PTO, IT, expenses</small><em>HR / IT owners</em></button>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <button type="button" class="flow-step" data-step="prepare" aria-pressed="false"><span class="flow-number">02</span><span class="flow-icon" aria-hidden="true">▱</span><strong>Prepare + sync</strong><small>Approval, version, index</small><em>IT / policy owners</em></button>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <button type="button" class="flow-step" data-step="retrieve" aria-pressed="false"><span class="flow-number">03</span><span class="flow-icon" aria-hidden="true">⌕</span><strong>Access-filtered RAG</strong><small>Permission check + LLM API</small><em>IT / Security</em></button>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <button type="button" class="flow-step" data-step="answer" aria-pressed="false"><span class="flow-number">04</span><span class="flow-icon" aria-hidden="true">↗</span><strong>Answer + review</strong><small>Citations, uncertainty</small><em>Employee / expert</em></button>
+        </div>
+        <div class="feedback-loop"><span class="loop-dot"></span><span><strong>05 · MONITOR AND FEED BACK</strong> — usage logs (minimized), grounding checks, freshness alerts, incidents and policy-owner feedback</span><span class="loop-owner">IT + Security</span></div>
+        <div class="stage-detail" aria-live="polite"><span class="detail-tag" id="detail-tag">SELECTED · 01</span><h3 id="detail-title">Approved company policies</h3><p id="detail-copy">Only owner-approved, current policy documents are eligible. Restrict sensitive HR records, personal data, and confidential leadership material from the initial pilot.</p><div class="detail-owner" id="detail-owner">Accountable: HR and IT policy owners</div></div>
+      </div>
+      <div class="arch-explain"><div><h3>Two safeguards built into the flow</h3><p><strong>Permission before retrieval:</strong> authenticate each employee and apply source-document access controls before any content reaches the LLM. <strong>Freshness before citation:</strong> only approved and currently effective versions should be cited; unresolved conflicts go to a policy owner.</p></div><div><h3>Human review stays in charge</h3><p>The assistant can summarize policy, but it cannot create policy or make sensitive HR decisions. It should flag ambiguity, link its sources, and route unresolved issues to the accountable expert.</p></div></div>
+    </section>
+
+    <section class="section section-soft" id="controls"><div class="shell">
+      <div class="section-head"><p class="section-kicker">02 / GOVERNANCE & OPERATIONS</p><h2>Built for reliability. <span class="display-italic">Governed for trust.</span></h2><p class="muted narrow">Operational safeguards are part of the architecture—not features to add after launch.</p></div>
+      <div class="controls-grid">
+        <article class="control-card"><span class="card-label">01 · IDENTITY</span><h3>Least-privilege access</h3><p>Enterprise sign-in, role- and document-level permissions, and pre-retrieval filtering. Unauthorized passages must never enter model context.</p><span class="card-owner">OWNER · IT / SECURITY</span></article>
+        <article class="control-card"><span class="card-label">02 · DATA PROTECTION</span><h3>Encryption + retention</h3><p>Encrypt traffic and storage. Minimize chat content in logs; retain or delete chats, indexes, and audit events under an approved policy.</p><span class="card-owner">OWNER · SECURITY / PRIVACY</span></article>
+        <article class="control-card"><span class="card-label">03 · FRESHNESS</span><h3>One business day</h3><p>Sync approved policy changes within one business day. Track version, effective date, document owner, and approval status; quarantine conflicts.</p><span class="card-owner">OWNER · POLICY OWNERS / IT</span></article>
+        <article class="control-card"><span class="card-label">04 · MONITORING</span><h3>Detect, respond, improve</h3><p>Monitor access violations, groundedness, broken citations, synchronization delays, service health, and cost. Maintain an incident response and rollback plan.</p><span class="card-owner">OWNER · IT / SECURITY</span></article>
+      </div>
+      <div class="vendor-strip"><span class="vendor-icon" aria-hidden="true">✓</span><div><strong>Approval before confidential data</strong><p>IT/Security, policy owners, privacy/legal, and procurement must review the proposed use. Verify vendor data-use, retention, subprocessors, incident response and contract terms. A vendor’s advertised feature is not an institutional approval.</p></div></div>
+    </div></section>
+
+    <section class="section shell" id="tradeoffs">
+      <div class="section-head"><p class="section-kicker">03 / PLATFORM DECISION</p><h2>Why managed RAG <span class="display-italic">over fine-tuning?</span></h2></div>
+      <div class="tradeoff-grid">
+        <article class="tradeoff-card selected"><div class="tradeoff-top"><span>RECOMMENDED FOR CONTROLLED PILOT</span><span class="check">✓</span></div><h3>Managed RAG + approved LLM API</h3><p>Retrieve live, permission-filtered documents without training a new foundation model. Maintain a document ingestion/indexing pipeline, embeddings, a vector/retrieval store, and LLM inference.</p><div class="tradeoff-bottom"><strong>Advantages</strong> Faster policy updates, source citations, lower in-house platform burden.<br><strong>Tradeoffs</strong> API latency, usage cost, vendor dependency, indexing/monitoring work.</div></article>
+        <article class="tradeoff-card"><div class="tradeoff-top"><span>ALTERNATIVE</span></div><h3>Fine-tuning or fully self-hosting</h3><p>Fine-tuning may improve output style or domain behavior, but it does not inherently enforce source permissions or keep answers current. Self-hosting provides more direct infrastructure control.</p><div class="tradeoff-bottom"><strong>Disadvantages for this pilot</strong> Higher engineering, compute, and maintenance requirements. A custom fine-tuned model still needs source governance and security controls.</div></article>
+      </div>
+      <div class="cost-grid"><div><span class="cost-label">COMPUTE</span><p>Embedding/indexing jobs and LLM inference</p></div><div><span class="cost-label">PLATFORM</span><p>Managed hosting, vector storage, integration</p></div><div><span class="cost-label">PEOPLE</span><p>IT operations, security review, content ownership</p></div><div><span class="cost-label">CHANGE</span><p>Staff training, communication, policy updates</p></div></div>
+    </section>
+
+    <section class="section section-soft" id="decision"><div class="shell decision-layout">
+      <div><p class="section-kicker">04 / RELEASE DECISION</p><h2>Ready to design. <span class="display-italic">Not ready to deploy.</span></h2><p>The simulated access failures make a production launch unjustified. Continue only with synthetic/approved data and controlled evaluation until permission enforcement and freshness are demonstrated.</p><div class="decision-banner"><span class="decision-mark">!</span><div><strong>PROPOSED STATUS: POSTPONE REAL DEPLOYMENT</strong><small>No production use of protected records until tests and approvals pass.</small></div></div></div>
+      <div class="boundaries"><div><span class="boundary-label may">OUR SYSTEM MAY</span><p>Answer authorized policy questions with current source citations and flag uncertainty for human review.</p></div><div><span class="boundary-label must">OUR SYSTEM MUST NOT</span><p>Expose restricted content, fabricate policy, or independently make sensitive personnel decisions.</p></div><div><span class="boundary-label stop">PAUSE / ROLLBACK / RETIRE IF</span><p>Any unauthorized disclosure occurs, approved updates miss the one-business-day window, required approvals are absent, or repeated unresolved failures make the design unsafe.</p></div></div>
+    </div></section>
+
+    <section class="closing shell"><div><p class="section-kicker">REFLECTION</p><h2>A model can answer a question. <span class="display-italic">A system must earn trust.</span></h2><p>This design taught me that successful AI deployment depends as much on data ownership, access boundaries, and accountability as on model capability. The proposed architecture makes the human decision points visible rather than treating a generated answer as final authority.</p></div><a class="btn btn-ghost" href="../../#artifacts">Back to all artifacts <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="site-footer shell"><span>© <span data-year>2026</span> Xinyue Wang · Applied ML Portfolio</span><span>Course design exercise · Fictional evidence · No live model deployed</span><a href="#main">Back to top ↑</a></footer>
+</body>
+</html>
