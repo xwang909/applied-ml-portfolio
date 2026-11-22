@@ -3,104 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Xinyue Wang's Applied Machine Learning portfolio: visual explanations of algorithms, neural networks, and responsible AI infrastructure.">
+  <meta name="description" content="Xinyue Wang's Applied Machine Learning portfolio: algorithms, neural networks, responsible AI infrastructure, and explainable AI.">
   <meta name="theme-color" content="#090d15">
   <title>Xinyue Wang | Applied Machine Learning Portfolio</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/styles.css">
   <script defer src="assets/main.js"></script>
   <style>
-    /* Only additive collection styles: existing shared site styles and files are untouched. */
-    .artifact-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
-    .artifact-grid .feature-card{grid-template-columns:1fr;min-height:460px}
-    .artifact-grid .feature-visual{min-height:197px}
-    .artifact-grid .feature-description{min-height:265px;padding:25px 25px 22px}
-    .artifact-grid .feature-description h3{margin:18px 0 12px;font-size:29px}
-    .artifact-grid .feature-description p{font-size:12.5px}
+    /* Additive site styles: the original assets/styles.css and JS remain unchanged. */
+    .artifact-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:22px}
+    .artifact-grid .feature-card{grid-template-columns:1fr;min-height:475px}
+    .artifact-grid .feature-visual{min-height:210px}
+    .artifact-grid .feature-description{min-height:255px;padding:29px 30px 24px}
+    .artifact-grid .feature-description h3{font-size:32px;margin:24px 0 12px}
+    .artifact-grid .feature-description p{font-size:13px}
     .neural-card .feature-visual{background:radial-gradient(circle at 50% 50%,#26314a 0%,#151e2d 64%,#111723 100%)}
-    .neural-visual{width:100%;height:195px;display:block;padding:18px 20px}
+    .neural-visual{width:100%;height:210px;display:block;padding:18px 26px}
     .neural-visual .nw-connection{stroke:#647490;stroke-width:1.4;opacity:.48}
     .neural-visual .nw-connection.hot{stroke:#ff9474;stroke-width:2.2;opacity:.84}
     .neural-visual .nw-node{fill:#141d2c;stroke:#9eafc9;stroke-width:2}
     .neural-visual .nw-node.hot{fill:#ff9c7e;stroke:#ffc5ab}
     .neural-visual text{fill:#bac5d5;font:600 10px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.5px}
-    .neural-caption{position:absolute;bottom:14px;left:21px;color:#aeb9cb;font-size:9px;letter-spacing:1.4px;font-weight:800}
+    .neural-caption,.infra-caption,.xai-caption{position:absolute;bottom:17px;left:27px;color:#aeb9cb;font-size:10px;letter-spacing:1.5px;font-weight:800}
     .artifact-grid .feature-card:hover .nw-node.hot{filter:drop-shadow(0 0 6px #ff936b)}
     .infra-card .feature-visual{background:radial-gradient(circle at 55% 50%,#273849,#161e2c 65%,#121823 100%)}
-    .infra-visual{width:100%;height:194px;display:block;padding:14px 20px}
+    .infra-visual{width:100%;height:210px;display:block;padding:14px 20px}
     .infra-visual .pipe{stroke:#6d8298;stroke-width:2.4;fill:none;stroke-dasharray:5 6}
     .infra-visual .pipe.hot{stroke:#ffa57e;stroke-dasharray:none;stroke-width:2.6}
     .infra-visual .node{fill:#1b2937;stroke:#688398;stroke-width:1.6}
     .infra-visual .accent{fill:#f6b18c;stroke:#ffcaaf}
     .infra-visual text{font:700 11px ui-sans-serif,system-ui,sans-serif;fill:#d1dce9;letter-spacing:1px}
-    .infra-caption{position:absolute;bottom:13px;left:21px;color:#aeb9cb;font-size:9px;letter-spacing:1.4px;font-weight:800}
-    .collection-count{font-size:11px;color:#aeb8c9;letter-spacing:1.5px;font-weight:750}
-    @media(max-width:1100px){.artifact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.infra-card{grid-column:span 2}.infra-card .feature-description{min-height:0}.infra-card .feature-visual{min-height:200px}}
-    @media(max-width:900px){.artifact-grid .feature-card{min-height:0}.nav-links{gap:12px;flex-wrap:wrap}.nav-links .nav-cta{display:none}.artifact-grid .feature-description{min-height:0}}
-    @media(max-width:650px){.artifact-grid{grid-template-columns:1fr}.infra-card{grid-column:span 1}.neural-visual,.infra-visual{height:174px;padding:10px 18px}.artifact-grid .feature-description h3{font-size:29px}.section-side-note{display:none}}
+    .xai-card .feature-visual{background:radial-gradient(circle at 46% 55%,#294050,#182332 67%,#121822 100%)}
+    .xai-visual{width:100%;height:210px;display:block;padding:15px 28px}
+    .xai-visual .xai-path{stroke:#849ab6;stroke-width:2;fill:none;stroke-dasharray:6 7}
+    .xai-visual .xai-hot{stroke:#f9a181;stroke-width:3;fill:none}
+    .xai-visual text{fill:#dce4ed;font:700 12px ui-sans-serif,system-ui,sans-serif;letter-spacing:1.4px}
+    .skills-band{border-top:1px solid var(--line);padding:70px 0;background:#101722}
+    .skills-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:50px;align-items:start}
+    .skills-layout h2{margin-top:13px}
+    .skills-tags{display:flex;flex-wrap:wrap;gap:12px;padding-top:13px}
+    .skills-tags span{padding:10px 14px;border-radius:9px;border:1px solid #3f4e60;background:#1b2534;color:#ccd4e1;font-size:12px;font-weight:650}
+    @media(max-width:900px){.artifact-grid{grid-template-columns:1fr}.artifact-grid .feature-card{min-height:0}.artifact-grid .feature-description{min-height:0}.nav-links{gap:12px;flex-wrap:wrap}.nav-links .nav-cta{display:none}.skills-layout{grid-template-columns:1fr}}
+    @media(max-width:600px){.neural-visual,.infra-visual,.xai-visual{height:176px;padding:10px 17px}.artifact-grid .feature-description h3{font-size:30px}.section-side-note{display:none}}
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <nav class="nav shell" aria-label="Main navigation">
-      <a class="brand" href="./" aria-label="Xinyue Wang — portfolio home"><span class="brand-mark">X<span class="mark-dot">.</span>W</span><span class="brand-name">Xinyue Wang <small>Applied ML Portfolio</small></span></a>
-      <div class="nav-links"><a class="active" aria-current="page" href="./">Overview</a><a href="#artifacts">Artifacts</a><a href="#about">About</a><a class="nav-cta" href="artifacts/03-ai-infrastructure/">Explore Artifact 03 <span aria-hidden="true">↗</span></a></div>
-    </nav>
-  </header>
+  <header class="site-header"><nav class="nav shell" aria-label="Main navigation">
+    <a class="brand" href="./" aria-label="Xinyue Wang — portfolio home"><span class="brand-mark">X<span class="mark-dot">.</span>W</span><span class="brand-name">Xinyue Wang <small>Applied ML Portfolio</small></span></a>
+    <div class="nav-links"><a class="active" aria-current="page" href="./">Overview</a><a href="#artifacts">Artifacts</a><a href="#about">About</a><a href="#skills">Skills</a><a class="nav-cta" href="artifacts/04-explainable-ai/">Explore Artifact 04 <span aria-hidden="true">↗</span></a></div>
+  </nav></header>
   <main id="main">
-    <section class="home-hero shell">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="signal-dot"></span> IWU · APPLIED MACHINE LEARNING · 2026</div>
-        <h1>From algorithms <span class="display-italic">to insight.</span></h1>
-        <p class="hero-lead">An evolving collection of visual explanations, applied ML thinking, and practical examples—connecting technical concepts to decisions that matter.</p>
-        <div class="hero-actions"><a href="#artifacts" class="btn btn-primary">Explore the collection <span aria-hidden="true">↗</span></a><a href="#about" class="btn btn-ghost">Meet the author <span aria-hidden="true">↓</span></a></div>
-        <div class="hero-meta"><span><strong>03</strong> Published artifacts</span><span class="hero-meta-rule"></span><span>Built to grow with the course</span></div>
-      </div>
-      <div class="hero-art" aria-label="Decorative diagram showing data, learning, and prediction" role="img">
-        <div class="art-glow"></div>
-        <div class="art-label"><span class="pulse-mini"></span> LEARNING IN PROGRESS <span class="art-label-number">03 / ∞</span></div>
-        <svg viewBox="0 0 540 410" class="hero-network" aria-hidden="true" focusable="false">
-          <defs><linearGradient id="trace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7757"/><stop offset="1" stop-color="#ffc08d"/></linearGradient></defs>
-          <g fill="none" stroke="#3a465b" stroke-width="1.2" stroke-dasharray="4 7" opacity=".9"><path d="M60 75 H155 L235 145 H360 L465 62"/><path d="M60 320 H175 L245 236 H365 L465 335"/><path d="M155 75 V320"/><path d="M365 62 V335"/><path d="M235 145 L245 236"/></g>
-          <g fill="none" stroke="url(#trace)" stroke-width="2.2"><path d="M60 75 L155 75 L235 145"/><path d="M245 236 L365 236 L465 335"/><path d="M235 145 L365 62"/></g>
-          <g fill="#121b2a" stroke="#778096" stroke-width="1.3"><circle cx="60" cy="75" r="10"/><circle cx="155" cy="75" r="8"/><circle cx="235" cy="145" r="11"/><circle cx="365" cy="62" r="8"/><circle cx="465" cy="62" r="11"/><circle cx="60" cy="320" r="9"/><circle cx="175" cy="320" r="10"/><circle cx="245" cy="236" r="12"/><circle cx="365" cy="236" r="8"/><circle cx="465" cy="335" r="11"/></g>
-          <g fill="#ff906b"><circle cx="60" cy="75" r="4"/><circle cx="235" cy="145" r="5"/><circle cx="365" cy="62" r="4"/><circle cx="245" cy="236" r="5"/><circle cx="465" cy="335" r="5"/></g>
-          <g font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#aeb8ca"><text x="42" y="52">DATA</text><text x="210" y="122">LEARN</text><text x="404" y="40">PREDICT</text><text x="218" y="276">DISCOVER</text><text x="407" y="370">CREATE</text></g>
-          <g><rect x="300" y="126" width="170" height="60" rx="12" fill="#1b2636" stroke="#47546a"/><text x="318" y="151" font-size="11" letter-spacing="2" fill="#9faec2">PORTFOLIO LIBRARY</text><text x="318" y="172" font-size="19" font-weight="700" fill="#f1f1ec">03 artifacts ↗</text></g>
-        </svg>
-        <div class="art-bottom"><span>UNDERSTAND <i class="mini-line"></i> VISUALIZE</span><span>ALGORITHMS + SYSTEM DESIGN</span></div>
-      </div>
-    </section>
+    <section class="home-hero shell"><div class="hero-copy">
+      <div class="eyebrow"><span class="signal-dot"></span> IWU · APPLIED MACHINE LEARNING · 2026</div>
+      <h1>From algorithms <span class="display-italic">to insight.</span></h1>
+      <p class="hero-lead">An evolving collection of visual explanations, applied ML thinking, and practical examples—connecting technical concepts to decisions that matter.</p>
+      <div class="hero-actions"><a href="#artifacts" class="btn btn-primary">Explore the collection <span aria-hidden="true">↗</span></a><a href="#about" class="btn btn-ghost">Meet the author <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-meta"><span><strong>04</strong> Published artifacts</span><span class="hero-meta-rule"></span><span>Built to grow with the course</span></div>
+    </div><div class="hero-art" aria-label="Decorative diagram showing data, learning, and prediction" role="img"><div class="art-glow"></div>
+      <div class="art-label"><span class="pulse-mini"></span> LEARNING IN PROGRESS <span class="art-label-number">04 / ∞</span></div>
+      <svg viewBox="0 0 540 410" class="hero-network" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="trace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7757"/><stop offset="1" stop-color="#ffc08d"/></linearGradient></defs>
+        <g fill="none" stroke="#3a465b" stroke-width="1.2" stroke-dasharray="4 7" opacity=".9"><path d="M60 75 H155 L235 145 H360 L465 62"/><path d="M60 320 H175 L245 236 H365 L465 335"/><path d="M155 75 V320"/><path d="M365 62 V335"/><path d="M235 145 L245 236"/></g>
+        <g fill="none" stroke="url(#trace)" stroke-width="2.2"><path d="M60 75 L155 75 L235 145"/><path d="M245 236 L365 236 L465 335"/><path d="M235 145 L365 62"/></g>
+        <g fill="#121b2a" stroke="#778096" stroke-width="1.3"><circle cx="60" cy="75" r="10"/><circle cx="155" cy="75" r="8"/><circle cx="235" cy="145" r="11"/><circle cx="365" cy="62" r="8"/><circle cx="465" cy="62" r="11"/><circle cx="60" cy="320" r="9"/><circle cx="175" cy="320" r="10"/><circle cx="245" cy="236" r="12"/><circle cx="365" cy="236" r="8"/><circle cx="465" cy="335" r="11"/></g>
+        <g fill="#ff906b"><circle cx="60" cy="75" r="4"/><circle cx="235" cy="145" r="5"/><circle cx="365" cy="62" r="4"/><circle cx="245" cy="236" r="5"/><circle cx="465" cy="335" r="5"/></g>
+        <g font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#aeb8ca"><text x="42" y="52">DATA</text><text x="210" y="122">LEARN</text><text x="404" y="40">PREDICT</text><text x="218" y="276">DISCOVER</text><text x="407" y="370">CREATE</text></g>
+        <g><rect x="300" y="126" width="170" height="60" rx="12" fill="#1b2636" stroke="#47546a"/><text x="318" y="151" font-size="11" letter-spacing="2" fill="#9faec2">PORTFOLIO LIBRARY</text><text x="318" y="172" font-size="19" font-weight="700" fill="#f1f1ec">04 artifacts ↗</text></g>
+      </svg><div class="art-bottom"><span>UNDERSTAND <i class="mini-line"></i> VISUALIZE</span><span>ALGORITHMS + RESPONSIBLE AI</span></div>
+    </div></section>
     <section class="section-divider"><div class="shell divider-inner"><span>LEARN</span><span>COMPARE</span><span>APPLY</span><span>REFLECT</span></div></section>
-    <section class="section shell" id="artifacts">
-      <div class="section-heading"><div><p class="section-kicker">01 / PORTFOLIO COLLECTION</p><h2>Course artifacts<span class="period">.</span></h2><p class="muted narrow">Each artifact translates a course concept into something visual, approachable, and grounded in real applications.</p></div><span class="section-side-note">CURRENTLY FEATURED — 01 + 02 + 03</span></div>
-      <div class="artifact-grid">
-        <a class="feature-card" href="artifacts/01-algorithm-atlas/" aria-label="Open Artifact 01: Algorithm Atlas">
-          <div class="feature-visual" aria-hidden="true"><span class="visual-orbit orbit-1"></span><span class="visual-orbit orbit-2"></span><span class="visual-orbit orbit-3"></span><span class="visual-chip chip-a">TABULAR</span><span class="visual-chip chip-b">VISION</span><span class="visual-chip chip-c">NLP</span><span class="visual-chip chip-d">GEN AI</span><div class="visual-core">AI<span>/</span>ML</div></div>
-          <div class="feature-description"><div class="card-topline"><span class="number-tag">ARTIFACT 01</span><span class="live-indicator"><span class="signal-dot"></span> AVAILABLE</span></div><h3>Algorithm Atlas</h3><p>A visual field guide to 12 machine learning methods, their learning styles, application domains, and use cases—with an interactive comparison matrix.</p><div class="card-bottom"><span>INTERACTIVE INFOGRAPHIC</span><span class="arrow-circle" aria-hidden="true">↗</span></div></div>
-        </a>
-        <a class="feature-card neural-card" href="artifacts/02-neural-network-visual-guide/" aria-label="Open Artifact 02: Neural Network Visual Guide">
-          <div class="feature-visual" aria-hidden="true"><svg class="neural-visual" viewBox="0 0 480 210" focusable="false">
-            <g class="nw-connection"><path d="M62 66L174 37M62 66L174 105M62 66L174 173M62 144L174 37M62 144L174 105M62 144L174 173M174 37L297 62M174 37L297 148M174 105L297 62M174 105L297 148M174 173L297 62M174 173L297 148M297 62L419 105M297 148L419 105"/></g>
-            <g class="nw-connection hot"><path d="M62 66L174 105L297 62L419 105" fill="none"/></g>
-            <g><circle class="nw-node" cx="62" cy="66" r="12"/><circle class="nw-node" cx="62" cy="144" r="12"/><circle class="nw-node" cx="174" cy="37" r="12"/><circle class="nw-node hot" cx="174" cy="105" r="12"/><circle class="nw-node" cx="174" cy="173" r="12"/><circle class="nw-node hot" cx="297" cy="62" r="12"/><circle class="nw-node" cx="297" cy="148" r="12"/><circle class="nw-node hot" cx="419" cy="105" r="13"/></g>
-            <text x="34" y="204">INPUT</text><text x="156" y="204">HIDDEN 1</text><text x="278" y="204">HIDDEN 2</text><text x="394" y="204">OUTPUT</text></svg><span class="neural-caption">DATA → REPRESENTATION → PREDICTION</span></div>
-          <div class="feature-description"><div class="card-topline"><span class="number-tag">ARTIFACT 02</span><span class="live-indicator"><span class="signal-dot"></span> AVAILABLE</span></div><h3>Inside a Neural Network</h3><p>An interactive visual presentation covering six essential components, forward propagation, loss, optimization, and a guided TensorFlow Playground experiment.</p><div class="card-bottom"><span>INTERACTIVE PRESENTATION + SLIDES</span><span class="arrow-circle" aria-hidden="true">↗</span></div></div>
-        </a>
-        <a class="feature-card infra-card" href="artifacts/03-ai-infrastructure/" aria-label="Open Artifact 03: Responsible AI Infrastructure">
-          <div class="feature-visual" aria-hidden="true"><svg class="infra-visual" viewBox="0 0 480 210" focusable="false">
-            <path class="pipe hot" d="M75 92 H152 M223 92 H295 M365 92 H420"/><path class="pipe" d="M342 120 V154 H130 V120"/>
-            <rect class="node" x="14" y="62" width="119" height="60" rx="13"/><rect class="node" x="153" y="62" width="120" height="60" rx="13"/><rect class="node" x="294" y="62" width="169" height="60" rx="13"/>
-            <circle class="accent" cx="45" cy="92" r="9"/><path d="M45 86v12m-5-6h10" stroke="#15202b" stroke-width="1.8"/>
-            <text x="62" y="88">POLICY</text><text x="62" y="102">DATA</text><text x="184" y="89">RAG</text><text x="181" y="104">SEARCH</text><text x="317" y="89">CITED ANSWER</text><text x="317" y="105">+ REVIEW</text>
-            <text x="148" y="171" style="font-size:10px;fill:#f6b18c">SECURITY · MONITORING LOOP</text>
-          </svg><span class="infra-caption">RETRIEVAL → GOVERNANCE → TRUST</span></div>
-          <div class="feature-description"><div class="card-topline"><span class="number-tag">ARTIFACT 03</span><span class="live-indicator"><span class="signal-dot"></span> AVAILABLE</span></div><h3>Responsible AI Infrastructure</h3><p>A practical architecture for a permission-aware RAG knowledge assistant, including data flow, one-day policy updates, security controls, costs, and deployment gates.</p><div class="card-bottom"><span>ARCHITECTURE BRIEF + DIAGRAM</span><span class="arrow-circle" aria-hidden="true">↗</span></div></div>
-        </a>
-      </div>
-    </section>
-    <section class="about-band" id="about"><div class="shell about-layout"><div><p class="section-kicker">02 / ABOUT THE AUTHOR</p><h2>Making complex ideas <span class="display-italic">useful.</span></h2></div><div><p>I’m <strong>Xinyue Wang</strong>, a Senior Quantitative Analyst with a background in financial engineering and experience in data analysis, mortgage analytics, and portfolio risk. My interest in machine learning is rooted in one question: how can technical models lead to clearer, more responsible business decisions?</p><p>This separate course portfolio documents my learning through explainable visual frameworks and thoughtful reflection. It is an educational collection—not a claim that every illustrated model has been trained or deployed.</p><a class="text-link" href="artifacts/01-algorithm-atlas/">Start with Artifact 01 <span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="section shell" id="artifacts"><div class="section-heading"><div><p class="section-kicker">01 / PORTFOLIO COLLECTION</p><h2>Course artifacts<span class="period">.</span></h2><p class="muted narrow">Each artifact translates a course concept into something visual, approachable, and grounded in real applications.</p></div><span class="section-side-note">CURRENTLY FEATURED — 01 + 02 + 03 + 04</span></div>
+    <div class="artifact-grid">
+      <a class="feature-card" href="artifacts/01-algorithm-atlas/" aria-label="Open Artifact 01: Algorithm Atlas"><div class="feature-visual" aria-hidden="true"><span class="visual-orbit orbit-1"></span><span class="visual-orbit orbit-2"></span><span class="visual-orbit orbit-3"></span><span class="visual-chip chip-a">TABULAR</span><span class="visual-chip chip-b">VISION</span><span class="visual-chip chip-c">NLP</span><span class="visual-chip chip-d">GEN AI</span><div class="visual-core">AI<span>/</span>ML</div></div><div class="feature-description"><div class="card-topline"><span class="number-tag">ARTIFACT 01</span><span class="live-indicator"><span class="signal-dot"></span> AVAILABLE</span></div><h3>Algorithm Atlas</h3><p>A visual field guide to 12 machine learning methods, their learning styles, application domains, and use cases—with an interactive comparison matrix.</p><div class="card-bottom"><span>INTERACTIVE INFOGRAPHIC</span><span class="arrow-circle" aria-hidden="true">↗</span></div></div></a>
+      <a class="feature-card neural-card" href="artifacts/02-neural-network-visual-guide/" aria-label="Open Artifact 02: Neural Network Visual Guide"><div class="feature-visual" aria-hidden="true"><svg class="neural-visual" viewBox="0 0 480 210" focusable="false"><g class="nw-connection"><path d="M62 66L174 37M62 66L174 105M62 66L174 173M62 144L174 37M62 144L174 105M62 144L174 173M174 37L297 62M174 37L297 148M174 105L297 62M174 105L297 148M174 173L297 62M174 173L297 148M297 62L419 105M297 148L419 105"/></g><g class="nw-connection hot"><path d="M62 66L174 105L297 62L419 105" fill="none"/></g><g><circle class="nw-node" cx="62" cy="66" r="12"/><circle class="nw-node" cx="62" cy="144" r="12"/><circle class="nw-node" cx="174" cy="37" r="12"/><circle class="nw-node hot" cx="174" cy="105" r="12"/><circle class="nw-node" cx="174" cy="173" r="12"/><circle class="nw-node hot" cx="297" cy="62" r="12"/><circle class="nw-node" cx="297" cy="148" r="12"/><circle class="nw-node hot" cx="419" cy="105" r="13"/></g><text x="34" y="204">INPUT</text><text x="156" y="204">HIDDEN 1</text><text x="278" y="204">HIDDEN 2</text><text x="394" y="204">OUTPUT</text></svg><span class="neural-caption">DATA → REPRESENTATION → PREDICTION</span></div><div class="feature-description"><div class="card-topline"><span class="number-tag">ARTIFACT 02</span><span class="live-indicator"><span class="signal-dot"></span> AVAILABLE</span></div><h3>Inside a Neural Network</h3><p>An interactive visual presentation covering six essential components, forward propagation, loss, optimization, and a guided TensorFlow Playground experiment.</p><div class="card-bottom"><span>INTERACTIVE PRESENTATION + SLIDES</span><span class="arrow-circle" aria-hidden="true">↗</span></div></div></a>
+      <a class="feature-card infra-card" href="artifacts/03-ai-infrastructure/" aria-label="Open Artifact 03: Responsible AI Infrastructure"><div class="feature-visual" aria-hidden="true"><svg class="infra-visual" viewBox="0 0 480 210" focusable="false"><path class="pipe hot" d="M75 92 H152 M223 92 H295 M365 92 H420"/><path class="pipe" d="M342 120 V154 H130 V120"/><rect class="node" x="14" y="62" width="119" height="60" rx="13"/><rect class="node" x="153" y="62" width="120" height="60" rx="13"/><rect class="node" x="294" y="62" width="169" height="60" rx="13"/><circle class="accent" cx="45" cy="92" r="9"/><path d="M45 86v12m-5-6h10" stroke="#15202b" stroke-width="1.8"/><text x="62" y="88">POLICY</text><text x="62" y="102">DATA</text><text x="184" y="89">RAG</text><text x="181" y="104">SEARCH</text><text x="317" y="89">CITED ANSWER</text><text x="317" y="105">+ REVIEW</text><text x="148" y="171" style="font-size:10px;fill:#f6b18c">SECURITY · MONITORING LOOP</text></svg><span class="infra-caption">RETRIEVAL → GOVERNANCE → TRUST</span></div><div class="feature-description"><div class="card-topline"><span class="number-tag">ARTIFACT 03</span><span class="live-indicator"><span class="signal-dot"></span> AVAILABLE</span></div><h3>Responsible AI Infrastructure</h3><p>A practical architecture for a permission-aware RAG knowledge assistant, including data flow, one-day policy updates, security controls, costs, and deployment gates.</p><div class="card-bottom"><span>ARCHITECTURE BRIEF + DIAGRAM</span><span class="arrow-circle" aria-hidden="true">↗</span></div></div></a>
+      <a class="feature-card xai-card" href="artifacts/04-explainable-ai/" aria-label="Open Artifact 04: Explainable AI"><div class="feature-visual" aria-hidden="true"><svg class="xai-visual" viewBox="0 0 480 210" focusable="false"><g class="xai-path"><path d="M36 53 L160 104 M36 104 L160 104 M36 156 L160 104"/><path d="M281 104 L380 104"/></g><g fill="#1a2736" stroke="#8ea5b9" stroke-width="2"><circle cx="36" cy="53" r="12"/><circle cx="36" cy="104" r="12"/><circle cx="36" cy="156" r="12"/><rect x="140" y="67" width="145" height="76" rx="15"/><circle cx="376" cy="104" r="47"/></g><g class="xai-hot"><path d="M287 104H327"/><circle cx="376" cy="104" r="30"/></g><g fill="#f6b18c"><circle cx="36" cy="53" r="4"/><circle cx="36" cy="104" r="4"/><circle cx="36" cy="156" r="4"/><circle cx="376" cy="104" r="8"/></g><text x="5" y="190">INPUTS</text><text x="159" y="98">BLACK BOX</text><text x="159" y="117">MODEL</text><text x="339" y="174">XAI LENS</text></svg><span class="xai-caption">EXPLAIN → VALIDATE → TRUST</span></div><div class="feature-description"><div class="card-topline"><span class="number-tag">ARTIFACT 04</span><span class="live-indicator"><span class="signal-dot"></span> AVAILABLE</span></div><h3>Explainable AI</h3><p>An infographic and interactive audit lens covering LLM transparency, interpretability challenges, model validation, fairness, metrics, and industry research.</p><div class="card-bottom"><span>XAI INFOGRAPHIC + INTERACTIVE GUIDE</span><span class="arrow-circle" aria-hidden="true">↗</span></div></div></a>
+    </div></section>
+    <section class="about-band" id="about"><div class="shell about-layout"><div><p class="section-kicker">02 / ABOUT THE AUTHOR</p><h2>Making complex ideas <span class="display-italic">useful.</span></h2></div><div><p>I’m <strong>Xinyue Wang</strong>, a Senior Quantitative Analyst with a background in financial engineering and experience in data analysis, mortgage analytics, and portfolio risk. My interest in machine learning is rooted in one question: how can technical models lead to clearer, more responsible business decisions?</p><p>This course portfolio documents my learning through visual frameworks and thoughtful reflection. It is an educational collection—not a claim that every illustrated model has been trained or deployed.</p><a class="text-link" href="artifacts/04-explainable-ai/">Explore my latest artifact <span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="skills-band" id="skills"><div class="shell skills-layout"><div><p class="section-kicker">03 / CORE SKILLS</p><h2>Methods &amp; tools<span class="period">.</span></h2><p class="muted">A growing toolkit spanning quantitative analysis, machine learning fundamentals, and responsible AI.</p></div><div class="skills-tags" aria-label="Skills list"><span>Python</span><span>SQL</span><span>Data Analysis</span><span>Model Evaluation</span><span>Neural Networks</span><span>Explainable AI</span><span>LLM Validation</span><span>Bias Testing</span><span>Quantitative Research</span><span>Data Visualization</span></div></div></section>
   </main>
   <footer class="site-footer shell"><span>© <span data-year>2026</span> Xinyue Wang · Applied ML Portfolio</span><span>Independent course portfolio · Built for GitHub Pages</span><a href="#main">Back to top ↑</a></footer>
 </body>
